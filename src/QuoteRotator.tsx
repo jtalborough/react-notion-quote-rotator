@@ -11,7 +11,7 @@ interface QuoteRotatorProps {
   onQuoteChange?: (quote: Quote) => void;
 }
 
-export function QuoteRotator({ 
+export default function QuoteRotator({ 
   quotes,
   interval = 10000,
   randomize = true,
