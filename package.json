@@ -25,6 +25,9 @@
     "type": "git",
     "url": "https://github.com/jtalborough/react-notion-quote-rotator.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
