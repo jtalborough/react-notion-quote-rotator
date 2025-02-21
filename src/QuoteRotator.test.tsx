@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import { QuoteRotator } from './QuoteRotator';
+import QuoteRotator from './QuoteRotator';
 import type { Quote } from './types';
 
 const mockQuotes: Quote[] = [
