@@ -1,0 +1,55 @@
+.quote-rotator {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quote-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  font-style: italic;
+}
+
+.quote-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quote-author {
+  font-weight: 600;
+  font-style: normal;
+}
+
+.quote-source {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.quote-source:hover {
+  text-decoration: underline;
+}
+
+.quote-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.quote-tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+}
