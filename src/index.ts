@@ -1,4 +1,6 @@
-export { QuoteRotator } from './QuoteRotator';
+import { QuoteRotator } from './QuoteRotator';
+
+export { QuoteRotator };
 export type { Quote } from './types';
 
 // Default export for easier importing
