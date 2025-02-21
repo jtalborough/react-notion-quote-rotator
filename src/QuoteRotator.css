@@ -1,42 +1,48 @@
 .quote-rotator {
-  padding: 1rem;
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  color: #fff;
 }
 
 .quote-content {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .quote-text {
   font-size: 1.25rem;
   line-height: 1.6;
-  margin: 0 0 1rem 0;
+  margin: 0;
   font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .quote-footer {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .quote-author {
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
 }
 
 .quote-source {
-  color: #666;
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
   font-size: 0.9rem;
+  transition: color 0.2s ease;
 }
 
 .quote-source:hover {
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: underline;
 }
 
@@ -48,8 +54,11 @@
 }
 
 .quote-tag {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
