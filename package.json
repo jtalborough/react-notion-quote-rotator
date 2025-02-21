@@ -4,8 +4,9 @@
   "description": "A React component for displaying and rotating quotes from a Notion database",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "style": "dist/styles.css",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp src/styles.css dist/",
     "test": "jest",
     "prepare": "npm run build"
   },

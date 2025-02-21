@@ -32,10 +32,11 @@ npm install react-notion-quote-rotator
    - Share your database with the integration
    - Copy the database ID from the URL
 
-3. Use the component in your React application:
+3. Import the styles and use the component in your React application:
 
 ```tsx
 import { QuoteRotator, NotionQuoteClient } from 'react-notion-quote-rotator';
+import 'react-notion-quote-rotator/dist/styles.css'; // Optional default styles
 
 // Initialize the client
 const notionClient = new NotionQuoteClient({
