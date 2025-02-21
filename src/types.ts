@@ -8,8 +8,3 @@ export interface Quote {
   };
   tags?: string[];
 }
-
-export interface NotionConfig {
-  token: string;
-  databaseId: string;
-}

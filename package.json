@@ -11,10 +11,6 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "./notion": {
-      "types": "./dist/notion.d.ts",
-      "default": "./dist/notion.js"
     }
   },
   "scripts": {
