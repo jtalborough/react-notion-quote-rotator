@@ -7,6 +7,16 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "style": "dist/styles.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./notion": {
+      "types": "./dist/notion.d.ts",
+      "default": "./dist/notion.js"
+    }
+  },
   "scripts": {
     "build": "rollup -c",
     "test": "jest --config jest.config.cjs",

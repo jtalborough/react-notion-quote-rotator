@@ -6,18 +6,20 @@ import { defineConfig } from 'rollup';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 
-export default defineConfig({
+export default defineConfig([{
+  // Main bundle without Notion client
   input: 'src/index.ts',
-  output: [
-    {
-      file: 'dist/index.js',
-      format: 'esm',
-      sourcemap: true,
-    },
-  ],
+  output: [{
+    file: 'dist/index.js',
+    format: 'esm',
+    sourcemap: true,
+  }],
   plugins: [
     external(),
-    resolve(),
+    resolve({
+      browser: true,
+      preferBuiltins: false
+    }),
     commonjs(),
     json(),
     typescript({
@@ -30,4 +32,24 @@ export default defineConfig({
       use: ['sass'],
     }),
   ],
-});
+}, {
+  // Notion client bundle
+  input: 'src/notion.ts',
+  output: [{
+    file: 'dist/notion.js',
+    format: 'esm',
+    sourcemap: true,
+  }],
+  external: ['@notionhq/client'],
+  plugins: [
+    external(),
+    resolve(),
+    commonjs(),
+    json(),
+    typescript({
+      tsconfig: './tsconfig.json',
+      exclude: ['**/__tests__/**'],
+    }),
+  ],
+}]);
+

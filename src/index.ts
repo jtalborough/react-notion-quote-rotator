@@ -1,7 +1,6 @@
 import { QuoteRotator } from './QuoteRotator';
 export { QuoteRotator } from './QuoteRotator';
-export { NotionQuoteClient } from './notionClient';
-export type { Quote, NotionConfig } from './types';
+export type { Quote } from './types';
 
 // Default export for easier importing
 export default QuoteRotator;
