@@ -2,9 +2,9 @@
   margin: 2rem 0;
   padding: 1.5rem;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #13151a;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .quote-content {
@@ -16,6 +16,9 @@
   line-height: 1.6;
   margin-bottom: 1rem;
   font-style: italic;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  letter-spacing: -0.025em;
 }
 
 .quote-footer {
@@ -27,13 +30,20 @@
 
 .quote-author {
   font-weight: 600;
-  color: var(--color-primary, #7c3aed);
+  color: var(--primary-color);
+  font-family: var(--font-sans);
 }
 
 .quote-source {
-  color: var(--color-secondary, #5b21b6);
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   font-size: 0.9em;
+  font-family: var(--font-sans);
+  transition: color 0.2s ease;
+}
+
+.quote-source:hover {
+  color: var(--primary-color);
 }
 
 .quote-source:hover {
@@ -48,8 +58,17 @@
 }
 
 .quote-tag {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.25rem 0.75rem;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
   border-radius: 999px;
-  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--primary-color);
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+}
+
+.quote-tag:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.3);
 }
