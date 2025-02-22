@@ -27,19 +27,19 @@ describe('QuoteRotator', () => {
     jest.useRealTimers();
   });
 
-  it('renders the first quote', () => {
-    render(<QuoteRotator quotes={mockQuotes} />);
+  it('renders the first quote when not randomized', () => {
+    render(<QuoteRotator quotes={mockQuotes} randomize={false} />);
     expect(screen.getByText('First quote')).toBeInTheDocument();
     expect(screen.getByText('Author 1')).toBeInTheDocument();
   });
 
   it('shows source when available', () => {
-    render(<QuoteRotator quotes={mockQuotes} showSource={true} />);
+    render(<QuoteRotator quotes={mockQuotes} showSource={true} randomize={false} />);
     expect(screen.getByText('Source 1')).toBeInTheDocument();
   });
 
   it('shows tags when available', () => {
-    render(<QuoteRotator quotes={mockQuotes} showTags={true} />);
+    render(<QuoteRotator quotes={mockQuotes} showTags={true} randomize={false} />);
     expect(screen.getByText('tag1')).toBeInTheDocument();
     expect(screen.getByText('tag2')).toBeInTheDocument();
   });
