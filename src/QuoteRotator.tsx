@@ -57,7 +57,7 @@ export function QuoteRotator({
     return () => clearInterval(timer);
   }, [filteredQuotes.length, interval, randomize, onQuoteChange]);
 
-  if (!quotes.length) {
+  if (!filteredQuotes.length) {
     return null;
   }
 
@@ -73,7 +73,7 @@ export function QuoteRotator({
           transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
         }}
       >
-        <p className="quote-text" style={{ cursor: currentQuote.notionUrl ? 'pointer' : 'default' }} onClick={() => {
+        <p className="quote-text" style={{ cursor: currentQuote?.notionUrl ? 'pointer' : 'default' }} onClick={() => {
           if (currentQuote.notionUrl) {
             window.open(currentQuote.notionUrl, '_blank');
           }
