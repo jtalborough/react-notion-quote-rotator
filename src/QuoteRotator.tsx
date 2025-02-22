@@ -66,9 +66,9 @@ export function QuoteRotator({
           transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
         }}
       >
-        <p className="quote-text" style={{ cursor: currentQuote.source?.url ? 'pointer' : 'default' }} onClick={() => {
-          if (currentQuote.source?.url) {
-            window.open(currentQuote.source.url, '_blank');
+        <p className="quote-text" style={{ cursor: currentQuote.notionUrl ? 'pointer' : 'default' }} onClick={() => {
+          if (currentQuote.notionUrl) {
+            window.open(currentQuote.notionUrl, '_blank');
           }
         }}>{currentQuote.text}</p>
         <footer className="quote-footer">
