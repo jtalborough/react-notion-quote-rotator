@@ -54,6 +54,11 @@ export class NotionQuoteClient {
       console.log('4a. First result raw:', JSON.stringify(response.results[0], null, 2));
       console.log('Raw response:', JSON.stringify(response.results[0]?.properties, null, 2));
       console.log('Available property names:', Object.keys(response.results[0]?.properties || {}));
+      console.log('5. Visibility property for first quote:', JSON.stringify(response.results[0]?.properties?.Visibility, null, 2));
+      console.log('6. All quotes visibility:', response.results.map(page => ({
+        text: page.properties?.Quote?.title[0]?.plain_text?.slice(0, 30),
+        visibility: page.properties?.Visibility?.multi_select?.map((item: any) => item.name)
+      })));
       console.log('5. First 3 quotes:');
       response.results.slice(0, 3).forEach((page: any, i) => {
         const visibility = page.properties?.Visibility?.multi_select?.map((item: any) => item.name) || [];
