@@ -81,7 +81,7 @@ export class NotionQuoteClient {
           title: page.properties.Source.url.split('/').pop() || page.properties.Source.url
         } : undefined,
         tags: page.properties.Tags?.multi_select?.map((tag: any) => tag.name) || [],
-        visibility: page.properties.Visibility?.multi_select?.map((item: any) => item.name) || [],
+        visibility: page.properties?.Visibility?.multi_select?.map((item: any) => item.name) || [],
       }));
     } catch (error) {
       console.error('Error fetching quotes from Notion:', error);
