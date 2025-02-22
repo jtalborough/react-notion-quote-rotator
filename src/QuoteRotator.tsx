@@ -21,7 +21,9 @@ export function QuoteRotator({
   showTags = true,
   onQuoteChange
 }: QuoteRotatorProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(() => {
+    return randomize ? Math.floor(Math.random() * quotes.length) : 0;
+  });
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
