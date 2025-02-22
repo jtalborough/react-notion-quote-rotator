@@ -66,7 +66,11 @@ export function QuoteRotator({
           transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
         }}
       >
-        <p className="quote-text">{currentQuote.text}</p>
+        <p className="quote-text" style={{ cursor: currentQuote.source?.url ? 'pointer' : 'default' }} onClick={() => {
+          if (currentQuote.source?.url) {
+            window.open(currentQuote.source.url, '_blank');
+          }
+        }}>{currentQuote.text}</p>
         <footer className="quote-footer">
           <cite className="quote-author">{currentQuote.author}</cite>
           {showSource && currentQuote.source && (

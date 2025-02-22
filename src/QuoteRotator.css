@@ -29,6 +29,12 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+.quote-text:hover {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: underline;
 }
 
 .quote-footer {
