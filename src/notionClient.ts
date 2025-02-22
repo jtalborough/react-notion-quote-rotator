@@ -26,6 +26,7 @@ export class NotionQuoteClient {
   async getQuotes(visibility?: string): Promise<Quote[]> {
     try {
       console.log('=== NOTION CLIENT ===');
+      console.log('0. Client auth:', this.client.auth ? 'Set' : 'Not set');
       console.log('1. Database ID:', this.databaseId);
       console.log('2. Visibility param:', visibility);
       
@@ -60,6 +61,7 @@ export class NotionQuoteClient {
       });
 
       console.log('4. Found quotes:', response.results.length);
+      console.log('4a. First result raw:', JSON.stringify(response.results[0], null, 2));
       console.log('Raw response:', JSON.stringify(response.results[0]?.properties, null, 2));
       console.log('Available property names:', Object.keys(response.results[0]?.properties || {}));
       console.log('5. First 3 quotes:');
