@@ -32,13 +32,13 @@ export class NotionQuoteClient {
       const filter = visibility ? {
         and: [
           {
-            property: 'Visibility',
+            property: 'visibility',
             multi_select: {
               is_not_empty: true
             }
           },
           {
-            property: 'Visibility',
+            property: 'visibility',
             multi_select: {
               contains: visibility
             }
@@ -62,7 +62,7 @@ export class NotionQuoteClient {
       console.log('4. Found quotes:', response.results.length);
       console.log('5. First 3 quotes:');
       response.results.slice(0, 3).forEach((page: any, i) => {
-        const visibility = page.properties?.Visibility?.multi_select?.map((item: any) => item.name) || [];
+        const visibility = page.properties?.visibility?.multi_select?.map((item: any) => item.name) || [];
         console.log(`   Quote ${i + 1}: ${page.properties?.Quote?.title[0]?.plain_text?.slice(0, 30)}... | Visibility: ${visibility.join(', ')}`);
       });
       console.log('=== END NOTION CLIENT ===');
@@ -77,7 +77,7 @@ export class NotionQuoteClient {
           title: page.properties.Source.url.split('/').pop() || page.properties.Source.url
         } : undefined,
         tags: page.properties.Tags?.multi_select?.map((tag: any) => tag.name) || [],
-        visibility: page.properties.Visibility?.multi_select?.map((item: any) => item.name) || [],
+        visibility: page.properties.visibility?.multi_select?.map((item: any) => item.name) || [],
       }));
     } catch (error) {
       console.error('Error fetching quotes from Notion:', error);
