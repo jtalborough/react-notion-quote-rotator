@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client';
+export { Client };
 
 export interface Quote {
   id: string;
