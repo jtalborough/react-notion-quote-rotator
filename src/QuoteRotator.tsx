@@ -57,10 +57,11 @@ export function QuoteRotator({
   return (
     <div className={`quote-rotator ${className}`}>
       <blockquote 
-        className={`quote-content ${isVisible ? 'visible' : 'hidden'}`}
+        className="quote-content"
         style={{
-          transition: 'opacity 0.5s ease-in-out',
-          opacity: isVisible ? 1 : 0
+          transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
         }}
       >
         <p className="quote-text">{currentQuote.text}</p>
