@@ -28,12 +28,10 @@ export class NotionQuoteClient {
       console.log('Querying Notion database:', this.databaseId);
       
       const filter = visibility ? {
-        and: [{
-          property: 'Visibility',
-          multi_select: {
-            contains: visibility
-          }
-        }]
+        property: 'Visibility',
+        multi_select: {
+          contains: visibility
+        }
       } : undefined;
 
       console.log('Using Notion filter:', JSON.stringify(filter, null, 2));
