@@ -10,6 +10,7 @@ A React component for displaying and rotating quotes from a Notion database.
 - 📱 Responsive design
 - 🔗 Source linking
 - 🏷️ Tag display
+- 🔒 Visibility filtering
 - ⚡ TypeScript support
 
 ## Installation
@@ -18,6 +19,28 @@ A React component for displaying and rotating quotes from a Notion database.
 npm install react-notion-quote-rotator
 ```
 
+## Visibility Filtering
+
+The component supports filtering quotes based on visibility settings from your Notion database:
+
+1. Set up a "Visibility" multi-select property in your Notion database
+2. Add visibility tags to your quotes (e.g., "public", "private", "homepage")
+3. Use the `visibilityFilter` prop to show only quotes with specific visibility:
+
+```tsx
+<QuoteRotator
+  quotes={quotes}
+  visibilityFilter="public" // Only shows quotes where visibility includes "public"
+  interval={10000}
+/>
+```
+
+This is useful for:
+- Showing different quotes on different pages
+- Having a mix of public and private quotes
+- Testing quotes before making them public
+- Creating themed quote collections
+
 ## Usage
 
 1. First, set up your Notion database with the following properties:
@@ -25,6 +48,7 @@ npm install react-notion-quote-rotator
    - Author (text)
    - Source (url)
    - Tags (multi-select)
+   - Visibility (multi-select)
    - Added (date)
 
 2. Get your Notion API token and database ID:
@@ -47,6 +71,7 @@ const notionClient = new NotionQuoteClient({
 // In your component
 function App() {
   const [quotes, setQuotes] = useState([]);
+  const [visibility, setVisibility] = useState('public'); // Example visibility filter
 
   useEffect(() => {
     async function fetchQuotes() {

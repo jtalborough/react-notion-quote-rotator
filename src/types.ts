@@ -8,4 +8,5 @@ export interface Quote {
     title?: string;
   };
   tags?: string[];
+  visibility?: string[];
 }

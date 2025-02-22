@@ -9,12 +9,20 @@ const mockQuotes: Quote[] = [
     text: 'First quote',
     author: 'Author 1',
     tags: ['tag1', 'tag2'],
-    source: { url: 'https://example.com', title: 'Source 1' }
+    source: { url: 'https://example.com', title: 'Source 1' },
+    visibility: ['public', 'homepage']
   },
   {
     id: '2',
     text: 'Second quote',
-    author: 'Author 2'
+    author: 'Author 2',
+    visibility: ['private']
+  },
+  {
+    id: '3',
+    text: 'Third quote',
+    author: 'Author 3',
+    visibility: ['public']
   }
 ];
 
@@ -65,6 +73,35 @@ describe('QuoteRotator', () => {
 
   it('returns null when quotes array is empty', () => {
     const { container } = render(<QuoteRotator quotes={[]} />);
+    expect(container.firstChild).toBeNull();
+  });
+
+  it('filters quotes based on visibility', () => {
+    render(<QuoteRotator quotes={mockQuotes} visibilityFilter="public" randomize={false} />);
+    expect(screen.getByText('First quote')).toBeInTheDocument();
+
+    act(() => {
+      jest.advanceTimersByTime(1500);
+    });
+
+    expect(screen.getByText('Third quote')).toBeInTheDocument();
+    // Second quote should never appear as it's not public
+    expect(screen.queryByText('Second quote')).not.toBeInTheDocument();
+  });
+
+  it('shows all quotes when no visibility filter is set', () => {
+    render(<QuoteRotator quotes={mockQuotes} randomize={false} />);
+    expect(screen.getByText('First quote')).toBeInTheDocument();
+
+    act(() => {
+      jest.advanceTimersByTime(1500);
+    });
+
+    expect(screen.getByText('Second quote')).toBeInTheDocument();
+  });
+
+  it('handles empty filtered quotes gracefully', () => {
+    const { container } = render(<QuoteRotator quotes={mockQuotes} visibilityFilter="nonexistent" />);
     expect(container.firstChild).toBeNull();
   });
 });

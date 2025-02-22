@@ -10,6 +10,7 @@ interface QuoteRotatorProps {
   showSource?: boolean;
   showTags?: boolean;
   onQuoteChange?: (quote: Quote) => void;
+  visibilityFilter?: string;
 }
 
 export function QuoteRotator({ 
@@ -19,15 +20,21 @@ export function QuoteRotator({
   className = '',
   showSource = true,
   showTags = true,
-  onQuoteChange
+  onQuoteChange,
+  visibilityFilter
 }: QuoteRotatorProps) {
+  // Filter quotes based on visibility
+  const filteredQuotes = visibilityFilter
+    ? quotes.filter(quote => quote.visibility?.includes(visibilityFilter))
+    : quotes;
+
   const [currentIndex, setCurrentIndex] = useState(() => {
-    return randomize ? Math.floor(Math.random() * quotes.length) : 0;
+    return randomize ? Math.floor(Math.random() * filteredQuotes.length) : 0;
   });
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    if (quotes.length <= 1) return;
+    if (filteredQuotes.length <= 1) return;
 
     const timer = setInterval(() => {
       setIsVisible(false);
@@ -35,10 +42,10 @@ export function QuoteRotator({
       setTimeout(() => {
         setCurrentIndex(current => {
           const newIndex = randomize
-            ? Math.floor(Math.random() * quotes.length)
-            : (current + 1) % quotes.length;
+            ? Math.floor(Math.random() * filteredQuotes.length)
+            : (current + 1) % filteredQuotes.length;
           
-          const nextQuote = quotes[newIndex];
+          const nextQuote = filteredQuotes[newIndex];
           onQuoteChange?.(nextQuote);
           
           return newIndex;
@@ -48,13 +55,13 @@ export function QuoteRotator({
     }, interval);
 
     return () => clearInterval(timer);
-  }, [quotes.length, interval, randomize, onQuoteChange]);
+  }, [filteredQuotes.length, interval, randomize, onQuoteChange]);
 
   if (!quotes.length) {
     return null;
   }
 
-  const currentQuote = quotes[currentIndex];
+  const currentQuote = filteredQuotes[currentIndex];
 
   return (
     <div className={`quote-rotator ${className}`}>
