@@ -30,10 +30,20 @@ export class NotionQuoteClient {
       console.log('2. Visibility param:', visibility);
       
       const filter = visibility ? {
-        property: 'Visibility',
-        multi_select: {
-          contains: visibility
-        }
+        and: [
+          {
+            property: 'Visibility',
+            multi_select: {
+              is_not_empty: true
+            }
+          },
+          {
+            property: 'Visibility',
+            multi_select: {
+              contains: visibility
+            }
+          }
+        ]
       } : undefined;
 
       console.log('3. Using filter:', JSON.stringify(filter, null, 2));
