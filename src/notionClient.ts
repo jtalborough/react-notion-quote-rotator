@@ -60,6 +60,8 @@ export class NotionQuoteClient {
       });
 
       console.log('4. Found quotes:', response.results.length);
+      console.log('Raw response:', JSON.stringify(response.results[0]?.properties, null, 2));
+      console.log('Available property names:', Object.keys(response.results[0]?.properties || {}));
       console.log('5. First 3 quotes:');
       response.results.slice(0, 3).forEach((page: any, i) => {
         const visibility = page.properties?.visibility?.multi_select?.map((item: any) => item.name) || [];
