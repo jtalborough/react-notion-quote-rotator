@@ -25,18 +25,18 @@ export class NotionQuoteClient {
 
   async getQuotes(visibility?: string): Promise<Quote[]> {
     try {
-      console.log('Querying Notion database:', this.databaseId);
+      console.log('=== NOTION CLIENT ===');
+      console.log('1. Database ID:', this.databaseId);
+      console.log('2. Visibility param:', visibility);
       
       const filter = visibility ? {
-        and: [{
-          property: 'Visibility',
-          multi_select: {
-            equals: visibility
-          }
-        }]
+        property: 'Visibility',
+        multi_select: {
+          contains: visibility
+        }
       } : undefined;
 
-      console.log('Using Notion filter:', JSON.stringify(filter, null, 2));
+      console.log('3. Using filter:', JSON.stringify(filter, null, 2));
 
       const response = await this.client.databases.query({
         database_id: this.databaseId,
@@ -49,8 +49,13 @@ export class NotionQuoteClient {
         ],
       });
 
-      console.log('Found quotes:', response.results.length);
-      console.log('First quote visibility:', response.results[0]?.properties?.Visibility?.multi_select);
+      console.log('4. Found quotes:', response.results.length);
+      console.log('5. First 3 quotes:');
+      response.results.slice(0, 3).forEach((page: any, i) => {
+        const visibility = page.properties?.Visibility?.multi_select?.map((item: any) => item.name) || [];
+        console.log(`   Quote ${i + 1}: ${page.properties?.Quote?.title[0]?.plain_text?.slice(0, 30)}... | Visibility: ${visibility.join(', ')}`);
+      });
+      console.log('=== END NOTION CLIENT ===');
 
       return response.results.map((page: any) => ({
         notionUrl: `https://notion.so/${page.id.replace(/-/g, '')}`,
