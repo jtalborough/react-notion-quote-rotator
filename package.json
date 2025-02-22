@@ -1,6 +1,6 @@
 {
   "name": "@jtalborough/react-notion-quote-rotator",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "A React component for displaying and rotating quotes from a Notion database",
   "type": "module",
   "main": "dist/index.js",
